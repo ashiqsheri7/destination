@@ -1,0 +1,19 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Destination</title>
+    <link rel="stylesheet" href="{% static 'destinations/static/css/styles.css' %}">
+</head>
+<body>
+    <h1>Delete Destination</h1>
+    <p>Are you sure you want to delete "{{ destination.place_name }}"?</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'destination_list' %}">Cancel</a>
+</body>
+</html>

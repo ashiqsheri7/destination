@@ -1,0 +1,23 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Destinations</title>
+    <link rel="stylesheet" href="{% static 'destinations/static/css/styles.css' %}">
+</head>
+<body>
+    <h1>Tourist Destinations</h1>
+    <a href="{% url 'destination_create' %}">Add New Destination</a>
+    <ul>
+        {% for destination in destinations %}
+        <li>
+            <a href="{% url 'destination_detail' destination.pk %}">
+                {{ destination.place_name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

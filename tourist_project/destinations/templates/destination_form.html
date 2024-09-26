@@ -1,0 +1,19 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Edit Destination</title>
+    <link rel="stylesheet" href="{% static 'destinations/static/css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ form.instance.pk|yesno:"Edit,Add" }} Destination</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'destination_list' %}">Cancel</a>
+</body>
+</html>

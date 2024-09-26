@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ destination.place_name }}</title>
+    <link rel="stylesheet" href="{% static 'destinations/static/css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ destination.place_name }}</h1>
+    <p>{{ destination.weather }}</p>
+    <p>{{ destination.state }}, {{ destination.district }}</p>
+    <p><a href="{{ destination.google_map_link }}">View on Google Maps</a></p>
+    <img src="{{ destination.image.url }}" alt="{{ destination.place_name }}">
+    <p>{{ destination.description }}</p>
+    <a href="{% url 'destination_update' destination.pk %}">Edit</a>
+    <form action="{% url 'destination_delete' destination.pk %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+    <a href="{% url 'destination_list' %}">Back to List</a>
+</body>
+</html>
